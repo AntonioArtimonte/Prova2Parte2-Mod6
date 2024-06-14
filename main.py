@@ -50,6 +50,8 @@ while True:
         break
 
 
+
+
 cap.release()
 out.release()
 cv2.destroyAllWindows()

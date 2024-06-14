@@ -66,7 +66,7 @@ Afim de avaliar o funcionamento, segue abaixo um vídeo utilizado para represent
 
 ### Questão 2.1
 
-O método escolhido: YOLOv8 funciona da seguinte maneira: primeiramente ele pega a imagem e divide a mesma em uma grid, após isso ele utiliza uma rede neural convolucional para identificar as "caixas", no caso os retângulos que ficam em volta dos objetos detectados, além de gerar um nível de confidência para cada caixa que representa a probabilidade daquilo ser verdadeiro. O diferencial do YOLOv8 é o fato do mesmo extrair informações da imagem com a mesma em diferentes escalas graças a rede neural, o que acaba promovendo uma melhor acurácia. Além disso a mesma apresenta a técnica (NMS) para reduzir confusão na imagem, removendo redundâncias.
+O método escolhido: YOLOv8 ou CNN funciona da seguinte maneira: primeiramente ele pega a imagem e divide a mesma em uma grid, após isso ele utiliza uma rede neural convolucional para identificar as "caixas", no caso os retângulos que ficam em volta dos objetos detectados, além de gerar um nível de confidência para cada caixa que representa a probabilidade daquilo ser verdadeiro. O diferencial do YOLOv8 é o fato do mesmo extrair informações da imagem com a mesma em diferentes escalas graças a rede neural, o que acaba promovendo uma melhor acurácia. Além disso a mesma apresenta a técnica (NMS) para reduzir confusão na imagem, removendo redundâncias.
 
 ### Questão 2.2
 
@@ -82,18 +82,26 @@ Em termos de se é o ou não possível resolver o problema, o mais prático a se
 
 Já o Haar Cascade, possui uma acurácia OK, e é facilmente executável, ou seja, não requer muito poder de processamento, levando em consideração que ele não necessita ser treinado, apenas aperfeiçoado através dos seus parâmetros como o `MinNeighbours` e `Scale`. Logo, para resolver o problema de detecção de faces que não requer uma acurácia muito boa, ele é muito bom, por apresentar uma facil implementação, porém a versatilidade do mesmo é complexo, levando em conta que para detectar outros objetos, ele pode apresentar certa dificuldade ao treinamento.
 
-O NN Linear e os Filtros de correlação cruzada possuem ambos uma acurácia muito menor comparado aos dois anteriores, além de possuirem uma baixa praticidade, levando em conta que é díficil utilizar os mesmos para detecção de objetos em imagens, além de possuírem uma versatilidade baixa, levando em conta sua simplicidade e limitações
+O NN Linear possui uma baixa viabilidade, levando em conta suas limitações para detecções de objetos. Além de possuir uma baixa facilidade de implementação, levando em conta que são bibliotecas do python de difícil utilização, além de possuir uma baixa versatilidade graças a suas limitações
+
+O Filtro de correlação cruzada, também possui várias limitações devido a sua simplicidade. Para implementar o mesmo é necessário ter um alto conhecimento técnico, além de possuir baixa versatilidade comparado aos outros 3.
+
+Logo, no tema proposto de identificar faces, o melhor modelo segue sendo o CNN por sua simplicidade e acurácia.
 
 ### Questão 2.3
 
-Para detecção de emoções, segue abaixo a classificação
+Já, para detecção de emoções, segue abaixo a classificação
 
 1. CNN
 2. Haar Cascade
 3. NN Linear
 4. Filtros de correlação cruzada
 
-A classificação segue a mesma pois, como dito anteriormente, o CNN é o melhor modelo para se utilizar afim de importar novos datasets, ou criar soluções novas. 
+A classificação segue a mesma pois, como dito anteriormente, o CNN é o melhor modelo para se utilizar afim de importar novos datasets, ou criar soluções com pesos novos.
+
+O Haar Cascade necessitaria de grandes modificações afim de adicionar a representação de emoções, além de possuir uma acurácia ainda menor. Provocando uma dificuldade de implementação.
+
+Já as outras duas soluções NN Linear e os Filtros de correlação cruzada simplesmente são simples demais para utilização na detecção de emoções, o que provocaria em muitos Falsos Positivos, não sendo adequados para o problema.
 
 ### Questão 2.4
 
@@ -107,7 +115,7 @@ emotions = {
 }
 ```
 
-Após isto, seria possível adicionar pesos a cada uma das emoções e analisar, se de um frame para o outro as mesmas tiveram uma mudança muito brusca em relação ao frame passado, e se isto de fato ocorreu, alterar o resultado para uma média entre o valor do frame antigo e o valor do frame atual. Assim sendo, adicionando um sistema de influenciação. Onde dependendo do tamanho da variação, será utilizado uma emoção diferente
+Após isto, seria possível adicionar pesos a cada uma das emoções e analisar, se de um frame para o outro as mesmas tiveram uma mudança muito brusca em relação ao frame passado, e se isto de fato ocorreu, alterar o resultado para uma média entre o valor do frame antigo e o valor do frame atual. Assim sendo, adicionando um sistema de influenciação. Onde dependendo do tamanho da variação, será utilizado uma emoção diferente.
 
 
 ### Questão 2.5
