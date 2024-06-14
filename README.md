@@ -62,6 +62,8 @@ Afim de avaliar o funcionamento, segue abaixo um vídeo utilizado para represent
 
 [Vídeo](https://drive.google.com/file/d/1DHaXqLLBNSyhgxtY0Htlb5Y9RZpdfptP/view?usp=sharing)
 
+**Observação:** Meu computador está tendo algum conflito relacionado ao OpenCV, e não estou conseguindo utilizar o VideoWrite para salvar vídeos em minha máquina, todavia o mesmo deve funcionar na hora de executar em sua máquina. 
+
 ## Questões teóricas
 
 ### Questão 2.1
@@ -78,13 +80,13 @@ A classificação correta seria:
 4. Filtros de correlação cruzada
 
 
-Em termos de se é o ou não possível resolver o problema, o mais prático a ser utilizado é o CNN, ele requer um treinamento afim de identificar os objetos/faces, todavia ele acaba no fim apresentando uma acurácia muito melhor. Todavia para treinar o mesmo requer um alto poder de processamento, logo, se já possui um modelo dele treinado, é o melhor a se utilizar, todavia se é necessário treinar um novo modelo, ele pode requerer certo poder de processamento. O mesmo possui facil implementação e possui uma alta versatilidade, levando em conta que é facil de treinar o mesmo com um dataset novo.
+Em termos de se é o ou não possível resolver o problema, o mais prático a ser utilizado é o CNN pois é a melhor opção para detecção de faces. Pois são capazes de aprender padrões complexos e não-lineares, além de serem capazes de generalizar bem para novos dados. além de possuir facilidade de treinamento e implementação levando em conta que para implementar uma CNN, basta apenas utilizar a biblioteca ultralytics e no caso deste projeto, um modelo ja treinado.
 
-Já o Haar Cascade, possui uma acurácia OK, e é facilmente executável, ou seja, não requer muito poder de processamento, levando em consideração que ele não necessita ser treinado, apenas aperfeiçoado através dos seus parâmetros como o `MinNeighbours` e `Scale`. Logo, para resolver o problema de detecção de faces que não requer uma acurácia muito boa, ele é muito bom, por apresentar uma facil implementação, porém a versatilidade do mesmo é complexo, levando em conta que para detectar outros objetos, ele pode apresentar certa dificuldade ao treinamento.
+Já o Haar Cascade é uma técnica de detecção de objetos que utiliza um classificador em cascata para detectar objetos em imagens ou vídeos. O classificador em cascata é treinado a partir de um grande número de imagens positivas e negativas. O classificador em cascata é composto por vários classificadores em cascata, cada um dos quais é treinado para detectar um padrão específico. O Haar Cascade é eficiente e rápido, mas não é tão preciso quanto as CNNs. Para implementar o mesmo é necessário utilizar a biblioteca OpenCV e um arquivo XML que contém as características do objeto a ser detectado. No quesito de versatilidade e eficiência, o Haar Cascade é uma boa opção para detecção de faces, mas não é tão eficiente quanto as CNNs.
 
-O NN Linear possui uma baixa viabilidade, levando em conta suas limitações para detecções de objetos. Além de possuir uma baixa facilidade de implementação, levando em conta que são bibliotecas do python de difícil utilização, além de possuir uma baixa versatilidade graças a suas limitações
+Agora o NN linear é um modelo de rede neural que consiste em uma única camada de neurônios. Cada neurônio é conectado a todos os neurônios da camada de entrada. O NN linear é simples e fácil de implementar, mas não é tão eficiente quanto as CNNs e o Haar Cascade. O NN linear é limitado em sua capacidade de aprender padrões complexos e não-lineares. Para implementar o NN linear, basta utilizar uma biblioteca de Deep Learning como PyTorch ou TensorFlow. No quesito de versatilidade e eficiência, o NN linear não é uma boa opção para detecção de faces, pois é limitado em sua capacidade de aprender padrões complexos e não-lineares.
 
-O Filtro de correlação cruzada, também possui várias limitações devido a sua simplicidade. Para implementar o mesmo é necessário ter um alto conhecimento técnico, além de possuir baixa versatilidade comparado aos outros 3.
+E o filtro de correlação cruzada é uma técnica de processamento de imagem que é usada para detectar padrões em imagens. O filtro de correlação cruzada é aplicado a uma imagem de entrada e a um filtro de convolução. O filtro de convolução é uma matriz que é deslizada sobre a imagem de entrada para calcular a saída. O filtro de correlação cruzada é eficiente e rápido, mas não é tão preciso quanto as CNNs e o Haar Cascade. Para implementar o filtro de correlação cruzada, basta utilizar uma biblioteca de processamento de imagem como OpenCV. No quesito de versatilidade e eficiência, o filtro de correlação cruzada não é uma boa opção para detecção de faces, pois não é tão preciso quanto as CNNs e o Haar Cascade.
 
 Logo, no tema proposto de identificar faces, o melhor modelo segue sendo o CNN por sua simplicidade e acurácia.
 
@@ -97,30 +99,22 @@ Já, para detecção de emoções, segue abaixo a classificação
 3. NN Linear
 4. Filtros de correlação cruzada
 
-A classificação segue a mesma pois, como dito anteriormente, o CNN é o melhor modelo para se utilizar afim de importar novos datasets, ou criar soluções com pesos novos.
+O melhor modelo para a detecção de emoções através da imagem de uma face é a CNN, pois ela é capaz de aprender padrões complexos e não-lineares em imagens, o que é essencial para a detecção de emoções. Os outros modelos, como Haar Cascade, NN Linear e filtros de correlação cruzada, são mais simples e não são capazes de aprender padrões complexos em imagens, o que pode limitar sua capacidade de detectar emoções com precisão.
 
-O Haar Cascade necessitaria de grandes modificações afim de adicionar a representação de emoções, além de possuir uma acurácia ainda menor. Provocando uma dificuldade de implementação.
+O Haar Cascade é um classificador de objetos em imagens que utiliza características de Haar para detectar objetos. Ele é um modelo simples e eficiente para a detecção de objetos em imagens, mas não é capaz de aprender padrões complexos em imagens, o que pode limitar sua capacidade de detectar emoções com precisão.
 
-Já as outras duas soluções NN Linear e os Filtros de correlação cruzada simplesmente são simples demais para utilização na detecção de emoções, o que provocaria em muitos Falsos Positivos, não sendo adequados para o problema.
+O NN Linear por ter uma unica camada de neurônios não é capaz de identificar padrões complexos em imagens, limitando o mesmo da detecção de emoções.
+
+Os filtros de correlação cruzada seguem no mesmo princípio do NN Linear, onde ele não é capaz de identificar padrões complexos em imagens, o que acaba sendo impossível sob a detecção de emoções
 
 ### Questão 2.4
 
-As soluções não são capazes de detectar se a pessoa está feliz e isto influenciar no próximo frame. Afim de adicionar isto as soluções, seria possível realizar um sistema de dicionário com as emoções, como por exemplo:
-
-```python
-emotions = {
-    feliz: 1,
-    normal: 2,
-    bravo: 3
-}
-```
-
-Após isto, seria possível adicionar pesos a cada uma das emoções e analisar, se de um frame para o outro as mesmas tiveram uma mudança muito brusca em relação ao frame passado, e se isto de fato ocorreu, alterar o resultado para uma média entre o valor do frame antigo e o valor do frame atual. Assim sendo, adicionando um sistema de influenciação. Onde dependendo do tamanho da variação, será utilizado uma emoção diferente.
-
+As soluções não são capazes de detectar se a pessoa está feliz e isto influenciar no próximo frame. Afim de adicionar isto as soluções, devera aplicar um algoritmo com o `Método Lucas-Kanade` por exemplo que é capaz de rastrear objetos em movimento em uma sequência de frames. Dessa forma, o algoritmo seria capaz de considerar variações de um frame para outro e, assim, detectar faces com maior precisão.
 
 ### Questão 2.5
 
 **EL BALON DE OR VAI PARA VINIUS MALVADEZA JUNIOR**
+
 
 ## Autor
 

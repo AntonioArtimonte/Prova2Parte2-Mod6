@@ -26,13 +26,15 @@ fps = cap.get(cv2.CAP_PROP_FPS)
 
 
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-out = cv2.VideoWriter('processed_xablau.mp4', fourcc, fps, (frame_width, frame_height))
+out = cv2.VideoWriter('xablau.mp4', fourcc, fps, (frame_width, frame_height))
 
 while True:
     ret, frame = cap.read()
     if not ret:
         break
 
+
+    # Afim de evitar Falsos positivos e não sobrecarregar o processamento, foi utilizado um threshold de 0.7 de confiança para a detecção de faces. Ou seja, apenas as faces com confiança maior que 0.7 serão detectadas e desenhadas na imagem. 
     results = model.predict(frame, conf=0.7)  
 
     for r in results:
