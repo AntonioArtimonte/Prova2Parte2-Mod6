@@ -113,7 +113,7 @@ As soluções não são capazes de detectar se a pessoa está feliz e isto influ
 
 ### Questão 2.5
 
-**EL BALON DE OR VAI PARA VINIUS MALVADEZA JUNIOR**
+**EL BALON DE OR VAI PARA VINICIUS MALVADEZA JUNIOR O ILUMINADO**
 
 
 ## Autor
