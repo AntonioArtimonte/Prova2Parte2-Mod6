@@ -1,0 +1,4 @@
+omegaconf==2.3.0
+opencv-python==4.10.0.82
+ultralytics==8.2.32
+ultralytics-thop==0.2.8
